@@ -1,0 +1,124 @@
+<div class="bootstrap-wrapper mt-3">
+    <!-- Top Bar with AI Toggle -->
+    <div class="mb-3 d-flex justify-content-end" style="padding: 0 15px;">
+        <button mat-raised-button color="accent" (click)="toggleAiChat()" class="ai-toggle-btn">
+            <mat-icon>auto_awesome</mat-icon> {{ showAiChat ? 'Hide AI Assistant' : 'Launch AI Quiz Builder' }}
+        </button>
+    </div>
+
+    <div class="row">
+        <!-- Manual Form Side -->
+        <div [class]="showAiChat ? 'col-md-7' : 'col-md-12'" style="transition: all 0.3s ease;">
+            <mat-card class="mat-card modern-card">
+                <h2 class="text-center theme-text">Add Questions to {{qTitle}}</h2>
+                    <mat-card-header>
+                        <mat-card-subtitle class="theme-text text-center w-100">
+                            Enter Details Of New Question
+                        </mat-card-subtitle>
+                    </mat-card-header>
+                    <mat-card-content>
+                            <form (submit)="addQuestion()">
+                                <mat-form-field class="w100 mt-2" appearance="outline">
+                                    <mat-label>Write the Question</mat-label>
+                                    <textarea rows="7" name="content"
+                                    [(ngModel)]="questions.content"
+                                    matInput placeholder="e.g. What is polymorphism?"></textarea>
+                                </mat-form-field>
+                            
+                                <div class="row text-center">
+                                    <div class="col-md-6">
+                                        <mat-form-field appearance="outline" class="w100">
+                                            <mat-label>Option 1</mat-label>
+                                            <input type="text" matInput name="option1"
+                                            [(ngModel)]="questions.option1"
+                                            >
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <mat-form-field appearance="outline" class="w100">
+                                            <mat-label>Option 2</mat-label>
+                                            <input type="text" matInput name="option2"
+                                            [(ngModel)]="questions.option2"
+                                            >
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="row text-center">
+                                    <div class="col-md-6">
+                                        <mat-form-field appearance="outline" class="w100">
+                                            <mat-label>Option 3</mat-label>
+                                            <input type="text" matInput name="option3"
+                                            [(ngModel)]="questions.option3"
+                                            >
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <mat-form-field appearance="outline" class="w100">
+                                            <mat-label>Option 4</mat-label>
+                                            <input type="text" matInput name="option4"
+                                            [(ngModel)]="questions.option4"
+                                            >
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                
+                                <div class="row text-center mt-3">
+                                    <div class="col-md-12">
+                                        <mat-form-field appearance="outline" class="w100">
+                                            <mat-label>Choose Correct Answer</mat-label>
+                                            <mat-select [(ngModel)]="questions.answer" name="answer">
+                                                <mat-option *ngIf="questions.option1" [value]="questions.option1" >{{questions.option1}}</mat-option>
+                                                <mat-option *ngIf="questions.option2" [value]="questions.option2" >{{questions.option2}}</mat-option>
+                                                <mat-option *ngIf="questions.option3" [value]="questions.option3" >{{questions.option3}}</mat-option>
+                                                <mat-option *ngIf="questions.option4" [value]="questions.option4" >{{questions.option4}}</mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                
+                                <div class="container text-center mt-3">
+                                    <button type="submit" color="primary" mat-raised-button class="submit-btn">Add Question</button>
+                                </div>
+                            </form>
+                    </mat-card-content>
+            </mat-card>
+        </div>
+
+        <!-- AI Assistant Side -->
+        <div class="col-md-5" *ngIf="showAiChat">
+            <mat-card class="mat-card ai-glass-card">
+                <mat-card-header class="ai-header">
+                    <div mat-card-avatar class="ai-avatar">
+                        <mat-icon class="ai-icon">smart_toy</mat-icon>
+                    </div>
+                    <mat-card-title class="ai-title">AI Quiz Assistant</mat-card-title>
+                    <mat-card-subtitle class="ai-subtitle">Let AI generate your questions instantly</mat-card-subtitle>
+                </mat-card-header>
+
+                <mat-card-content class="ai-content mt-4">
+                    <div class="ai-chat-bubble">
+                        <div class="typing-indicator" *ngIf="isGenerating">
+                            <span></span><span></span><span></span>
+                        </div>
+                        <div *ngIf="!isGenerating">
+                            Hello! I'm your AI Quiz Builder. What topic should we create a question for?
+                        </div>
+                    </div>
+
+                    <mat-form-field appearance="outline" class="w100 mt-4 ai-input">
+                        <mat-label>Topic or Prompt (e.g. Java OOP concepts)</mat-label>
+                        <textarea matInput rows="4" [(ngModel)]="aiPrompt" placeholder="Type your prompt here..."></textarea>
+                    </mat-form-field>
+
+                    <div class="text-center mt-3">
+                        <button mat-raised-button class="ai-generate-btn" (click)="generateWithAI()" [disabled]="isGenerating">
+                            <mat-icon *ngIf="!isGenerating">auto_fix_high</mat-icon>
+                            <mat-icon *ngIf="isGenerating" class="spin-icon">autorenew</mat-icon>
+                            {{ isGenerating ? 'Generating...' : 'Generate Magic Question' }}
+                        </button>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>

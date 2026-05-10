@@ -1,0 +1,46 @@
+<div class="bootstrap-wrapper">
+    <div class="container-fluid" style="padding: 40px;">
+        <h1 class="welcome-heading">Dashboard Overview</h1>
+        
+        <div class="row">
+            <!-- Total Quizzes -->
+            <div class="col-md-4">
+                <mat-card class="stat-card">
+                    <div class="stat-icon-wrapper quizzes">
+                        <mat-icon>quiz</mat-icon>
+                    </div>
+                    <div class="stat-content">
+                        <mat-card-title class="stat-title">Total Quizzes</mat-card-title>
+                        <p class="stat-value">{{ totalQuizzes }}</p>
+                    </div>
+                </mat-card>
+            </div>
+
+            <!-- Published Quizzes -->
+            <div class="col-md-4">
+                <mat-card class="stat-card">
+                    <div class="stat-icon-wrapper published">
+                        <mat-icon>check_circle</mat-icon>
+                    </div>
+                    <div class="stat-content">
+                        <mat-card-title class="stat-title">Published</mat-card-title>
+                        <p class="stat-value">{{ publishedQuizzes }}</p>
+                    </div>
+                </mat-card>
+            </div>
+
+            <!-- Question Papers -->
+            <div class="col-md-4">
+                <mat-card class="stat-card">
+                    <div class="stat-icon-wrapper papers">
+                        <mat-icon>description</mat-icon>
+                    </div>
+                    <div class="stat-content">
+                        <mat-card-title class="stat-title">Question Papers</mat-card-title>
+                        <p class="stat-value">{{ totalQuestionPapers }}</p>
+                    </div>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>

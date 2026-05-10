@@ -1,0 +1,11 @@
+.full-width{
+    width: 90%;
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+  }
+
+mat-form-field{
+    padding-left: 55px;
+}

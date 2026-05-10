@@ -1,0 +1,47 @@
+<div class="container mt-2">
+  <mat-card class="mat-card">
+    <h2 class="theme-text text-center">Update Question</h2>
+    <form>
+      <mat-form-field class="w100 mt-2" style="width: 100%;height: auto;">
+        <mat-label class="theme-text">Write the Question</mat-label>
+        <textarea rows="7" name="questionContent"
+        [(ngModel)]="question.questionContent"
+        matInput placeholder="enter here"></textarea>
+      </mat-form-field>
+    
+      <div class="row text-center">
+        <div class="col-md-6">
+          <mat-form-field>
+            <mat-label class="theme-text">Marks</mat-label>
+            <input type="text" matInput name="Marks"
+            [(ngModel)]="question.marks"
+            >
+          </mat-form-field>
+        </div>
+        <div class="col-md-6">
+          <mat-form-field>
+            <mat-label class="theme-text">CO</mat-label>
+            <input type="text" matInput name="CO"
+            [(ngModel)]="question.co"
+            >
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row text-center">
+        <div class="col-md-6">
+          <mat-form-field>
+            <mat-label class="theme-text">BTL</mat-label>
+            <input type="text" matInput name="BTL"
+            [(ngModel)]="question.btl"
+            >
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="container text-center">
+        <button type="submit" style="margin-bottom: 8px;" (click)="updateQuestion()" color="primary"  mat-raised-button>Update</button>
+      </div>
+    </form>
+  </mat-card>
+  </div>
+
+  

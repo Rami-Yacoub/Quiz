@@ -1,0 +1,33 @@
+<p>
+  <mat-toolbar class="navbar-modern">
+    <button (click)="toggleSidebar()" mat-icon-button class="menu-button">
+      <mat-icon>menu</mat-icon>
+    </button>
+    
+    <span class="brand-name" routerLink="/">EduQuiz Portal</span>
+
+    <span *ngIf="isLoggedIn" class="welcome-text">
+      Welcome, <span class="user-highlight">{{login.getUser().username}}</span>
+    </span>
+   
+    <span class="example-spacer"></span>
+
+    <div class="nav-actions">
+      <a mat-button *ngIf="!isLoggedIn" routerLink="/login" class="nav-link">
+        <mat-icon matPrefix>login</mat-icon> Login
+      </a>
+      
+      <a mat-button *ngIf="!isLoggedIn" routerLink="/signup" class="nav-link">
+        <mat-icon matPrefix>person_add</mat-icon> Register
+      </a>
+
+      <button mat-icon-button (click)="toggleTheme()" class="theme-toggle">
+        <mat-icon>{{ themeService.themeSignal() === 'dark' ? 'light_mode' : 'dark_mode' }}</mat-icon>
+      </button>
+
+      <button mat-icon-button *ngIf="isLoggedIn" (click)="logout()" class="logout-button">
+        <mat-icon>logout</mat-icon>
+      </button>
+    </div>
+  </mat-toolbar>
+</p>

@@ -1,0 +1,48 @@
+<app-navbar></app-navbar>
+<div class="bootstrap-wrapper">
+    <div class="container" style="margin-top: 70px;">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <mat-card class="mat-card">
+                    <h1 class="text-center mt-4">Signup</h1>
+                    <form (ngSubmit)="formSubmit()" novalidate>
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label class="theme-text">Username (3-20 characters, alphanumeric)</mat-label>
+                            <input required minlength="3" maxlength="20" pattern="[a-zA-Z0-9]+" 
+                                name="username" [(ngModel)]="user.username" matInput class="theme-text" placeholder="Enter Username">
+                        </mat-form-field>
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label class="theme-text">First Name (2-20 characters, alphabetic)</mat-label>
+                            <input required minlength="2" maxlength="20" pattern="[a-zA-Z]+" 
+                                name="firstname" [(ngModel)]="user.firstName" matInput class="theme-text" placeholder="Enter First Name">
+                        </mat-form-field>
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label class="theme-text">Last Name (2-20 characters, alphabetic)</mat-label>
+                            <input required minlength="2" maxlength="20" pattern="[a-zA-Z]+" 
+                                name="lastname" [(ngModel)]="user.lastName" matInput class="theme-text" placeholder="Enter Last Name">
+                        </mat-form-field>
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label class="theme-text">Email</mat-label>
+                            <input required type="email" 
+                                name="email" [(ngModel)]="user.email" matInput class="theme-text" placeholder="Enter Email" class="theme-text">
+                        </mat-form-field>
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label class="theme-text">Phone (10 digits)</mat-label>
+                            <input required name="phone" type="tel" pattern="[0-9]{10}"
+                                [(ngModel)]="user.phone" matInput placeholder="Enter Phone Number" class="theme-text">
+                        </mat-form-field>
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label class="theme-text">Password (at least 6 characters)</mat-label>
+                            <input required minlength="6" 
+                                name="password" [(ngModel)]="user.password" type="password" matInput placeholder="Enter Password" class="theme-text">
+                        </mat-form-field>
+                        <div class="container text-center">
+                            <button type="submit" class="btn m-2" mat-raised-button color="primary">Signup</button>
+                            <button type="reset" class="btn m-2" mat-raised-button color="warn">Clear</button>
+                        </div>
+                    </form>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>

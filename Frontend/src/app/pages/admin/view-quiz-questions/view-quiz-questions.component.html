@@ -1,0 +1,43 @@
+<h2 class="text-center theme-text" style="color: white;">Questions of {{qTitle}}</h2>
+<div class="bootstrap-wrapper">
+    <div class="row">
+        <div class="col-md-12">
+            <mat-card *ngFor="let q of questions;let i=index" class="mat-card mt-4">
+                <mat-card-content>
+                    <p>
+                        Q {{i+1}} <span [innerHTML]="q.content"></span>
+                    </p>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p>1) {{q.option1}}</p>
+                            </div>
+                            <div class="col-md-6">
+                                <p>2) {{q.option2}}</p>
+                            </div>
+                            <div class="col-md-6">
+                                <p>3) {{q.option3}}</p>
+                            </div>
+                            <div class="col-md-6">
+                                <p> 4) {{q.option4}}</p>
+                            </div>
+                        </div>
+                        <mat-divider></mat-divider>
+                        <p class="mt-4">
+                            <b>Correct Answer : {{q.answer}}</b>
+                        </p>
+                    </div>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button (click)="deleteQuestion(q.qid)" mat-button color="warn" style="margin-left: 5px;">Delete</button>
+                </mat-card-actions>
+            </mat-card>
+            <div class="container text-center mt-4">
+                <button [routerLink]="'/adminDashboard/add-question/'+qId+'/'+qTitle" mat-raised-button color="primary" style="margin-bottom: 5px;" >Add</button>
+                <input type="file" (change)="handleFileInput($event)" #fileInput style="display: none;" id="fileInput">
+
+                <button mat-raised-button color="warn" [disabled]="isImporting" (click)="fileInput.click()" style="margin-left: 5px;margin-bottom: 5px;">Import</button>
+            </div>
+        </div>
+    </div>
+</div>
