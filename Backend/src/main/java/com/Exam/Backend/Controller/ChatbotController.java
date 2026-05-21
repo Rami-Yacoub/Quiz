@@ -18,8 +18,10 @@ import java.util.Map;
 @CrossOrigin("*")
 public class ChatbotController {
 
-    private final String GEMINI_API_KEY = "AIzaSyBRUh6jipW1vCepjM2R3qH7zONp-os8W7c";
-    private final String GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=" + GEMINI_API_KEY;
+    private final String GEMINI_API_KEY = "";
+    private final String GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent?key=" + GEMINI_API_KEY;
+
+
 
     @PostMapping("/generate")
     public ResponseEntity<?> generateQuestions(@RequestBody Map<String, String> request) {
